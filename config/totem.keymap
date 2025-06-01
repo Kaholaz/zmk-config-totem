@@ -204,7 +204,7 @@
         symbols {
             label = "SYM";
             bindings = <
-       &kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LS(NUMBER_3)  &kp LS(NUMBER_5)    &kp LS(NUMBER_6)  &kp LS(N7)     &kp LS(NUMBER_8)   &kp LS(NUMBER_9)      &kp LS(NUMBER_0)
+       &kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LS(NUMBER_4)  &kp LS(NUMBER_5)    &kp LS(NUMBER_6)  &kp LS(N7)     &kp LS(NUMBER_8)   &kp LS(NUMBER_9)      &kp LS(NUMBER_0)
        &kp GRAVE         &pipe             &eq               &le               &thin_arrow         &kp EQUAL         &kp MINUS      &kp BACKSLASH      &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)
 &none  &kp LS(GRAVE)     &rev_arrow        &eqeq             &ge               &thin_arrow         &kp LS(EQUAL)     &kp LS(MINUS)  &kp LS(BACKSLASH)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none
                                            &trans            &mo 3             &trans              &trans            &trans         &trans
