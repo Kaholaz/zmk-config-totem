@@ -29,13 +29,6 @@
     combos {
         compatible = "zmk,combos";
 
-        esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&key_lock 4 ESCAPE>;
-            layers = <0 1 2 3>;
-        };
-
         ret {
             bindings = <&kp ENTER>;
             key-positions = <16 17 18>;
@@ -46,19 +39,6 @@
             bindings = <&kp TAB>;
             key-positions = <11 12 13>;
             layers = <0 1 2 3>;
-        };
-
-        super {
-            bindings = <&kp LEFT_GUI>;
-            key-positions = <32 37>;
-            slow-release;
-            layers = <0 1 2 3>;
-        };
-
-        aa {
-            bindings = <&kp LEFT_BRACKET>;
-            key-positions = <17 18>;
-            layers = <0>;
         };
 
         shift_combo_left {
@@ -79,14 +59,19 @@
             layers = <0 1 2 3>;
         };
 
-        ae {
-            bindings = <&kp APOS>;
-            key-positions = <18 19>;
+        altgr {
+            bindings = <&kp RIGHT_ALT>;
+            key-positions = <32 37>;
         };
 
-        aa2 {
-            bindings = <&kp LEFT_BRACKET>;
-            key-positions = <18 8>;
+        left_tab {
+            bindings = <&kp LS(TAB)>;
+            key-positions = <11 12>;
+        };
+
+        esc {
+            bindings = <&key_lock 4 ESCAPE>;
+            key-positions = <17 18>;
         };
     };
 
@@ -145,36 +130,94 @@
         };
     };
 
+    macros {
+        pipe: pipe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE &kp GT>;
+            label = "PIPE";
+        };
+
+        thin_arrow: thin_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS &kp GT>;
+            label = "THIN_ARROW";
+        };
+
+        thick_arrow: thick_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp GT>;
+            label = "THICK_ARROW";
+        };
+
+        eq: eq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp EQUAL>;
+            label = "EQ";
+        };
+
+        eqeq: eqeq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp EQUAL &kp EQUAL>;
+            label = "EQEQ";
+        };
+
+        le: le {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LT &kp EQUAL>;
+            label = "LE";
+        };
+
+        ge: ge {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GT &kp EQUAL>;
+            label = "GE";
+        };
+
+        rev_arrow: rev_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LT &kp MINUS>;
+            label = "REV_ARROW";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         base {
             label = "BASE";
             bindings = <
-              &kp Q  &kp W  &kp E             &kp R     &kp T        &kp Y                      &kp U  &kp I          &kp O    &kp P
-              &kp A  &kp S  &kp D             &kp F     &kp G        &kp H                      &kp J  &kp K          &kp L    &kp SEMI
-&kp LEFT_ALT  &kp Z  &kp X  &kp C             &kp V     &kp B        &kp N                      &kp M  &kp COMMA      &kp DOT  &kp FSLH  &kp SINGLE_QUOTE
-                            &kp LEFT_CONTROL  &numbers  &kp SPACE    &mt_thumb LEFT_ALT DELETE  &mo 1  &kp BACKSPACE
+              &kp Q  &kp W  &kp E             &kp R     &kp T        &kp Y          &kp U  &kp I          &kp O    &kp P
+              &kp A  &kp S  &kp D             &kp F     &kp G        &kp H          &kp J  &kp K          &kp L    &kp SEMI
+&kp LEFT_ALT  &kp Z  &kp X  &kp C             &kp V     &kp B        &kp N          &kp M  &kp COMMA      &kp DOT  &kp FSLH  &kp SINGLE_QUOTE
+                            &kp LEFT_CONTROL  &numbers  &kp SPACE    &kp LEFT_META  &mo 1  &kp BACKSPACE
             >;
         };
 
         symbols {
             label = "SYM";
             bindings = <
-       &mt LS(GRAVE) GRAVE    &kp LS(NUMBER_1)  &mt RA(NUMBER_2) LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp RA(NUMBER_4)    &kp LS(N5)  &kp LS(NUMBER_6)  &kp LS(N7)           &kp LS(N0)  &kp LS(MINUS)
-       &kp RIGHT_BRACKET      &kp LS(EQUAL)     &kp NUHS                       &kp RA(EQUAL)     &none               &kp RA(N7)  &kp LS(N8)        &kp EQUAL            &kp LS(N9)  &kp RA(N0)
-&none  &kp RA(RIGHT_BRACKET)  &kp SLASH         &kp LS(RBKT)                   &kp MINUS         &none               &kp NUBS    &kp RA(N8)        &kp LS(NON_US_HASH)  &kp RA(N9)  &kp LS(NON_US_BACKSLASH)  &none
-                                                &trans                         &mo 3             &trans              &trans      &trans            &trans
+       &kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LS(NUMBER_3)  &kp LS(NUMBER_5)    &kp LS(NUMBER_6)  &kp LS(N7)     &kp LS(NUMBER_8)   &kp LS(NUMBER_9)      &kp LS(NUMBER_0)
+       &kp GRAVE         &pipe             &eq               &le               &thin_arrow         &kp EQUAL         &kp MINUS      &kp BACKSLASH      &kp LS(LEFT_BRACKET)  &kp LS(RIGHT_BRACKET)
+&none  &kp LS(GRAVE)     &rev_arrow        &eqeq             &ge               &thin_arrow         &kp LS(EQUAL)     &kp LS(MINUS)  &kp LS(BACKSLASH)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none
+                                           &trans            &mo 3             &trans              &trans            &trans         &trans
             >;
         };
 
         num_nav {
             label = "NUM";
             bindings = <
-       &none  &mt_nav LS(LA(LC(LEFT))) LA(LC(LEFT))  &kp UP    &mt_nav LS(LA(LC(RIGHT))) LA(LC(RIGHT))  &kp C_VOL_UP        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5
-       &none  &kp LEFT                               &kp DOWN  &kp RIGHT                                &kp C_PLAY_PAUSE    &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0
-&none  &none  &kp PG_UP                              &none     &kp PG_DN                                &kp C_VOL_DN        &none         &none         &trans        &trans        &trans  &none
-                                                     &trans    &trans                                   &trans              &trans        &mo 3         &trans
+        &kp PRINTSCREEN  &kp PAGE_DOWN  &kp UP       &kp PAGE_UP  &kp C_VOL_UP    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5
+        &kp HOME         &kp LEFT       &kp DOWN     &kp RIGHT    &kp C_MUTE      &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0
+&trans  &kp END          &kp C_PREV     &kp C_PAUSE  &kp C_NEXT   &kp C_VOL_DN    &none         &none         &trans        &trans        &trans  &none
+                                        &trans       &trans       &trans          &trans        &mo 3         &trans
             >;
         };
 
