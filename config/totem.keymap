@@ -88,7 +88,7 @@
 
         aa {
             bindings = <&kp RA(A)>;
-            key-positions = <20 37>;
+            key-positions = <37 10>;
             layers = <0>;
         };
     };
